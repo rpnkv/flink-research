@@ -29,7 +29,7 @@ object WindowPracticeJob {
     env.setParallelism(1)
 
     val transactions: DataStream[Event] = env
-      .addSource(new EventSource)
+      .addSource(EventSource.apply(0,0))
       .name("transactions")
 
     val window: AllWindowedStream[List[Event], TimeWindow] = transactions

@@ -9,7 +9,7 @@ class EventSource(range: Seq[Int], producingDelay: Int) extends SourceFunction[E
     range
       .foreach(
         value => {
-          ctx.collect(Event(value))
+          ctx.collect(Event(value, System.currentTimeMillis()))
           //ctx.collectWithTimestamp(Event(value), System.currentTimeMillis())
           Thread.sleep(ProducingDelay.PRODUCING_DELAY)
         }
